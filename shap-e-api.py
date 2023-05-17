@@ -52,12 +52,12 @@ def generate_point_cloud():
     mesh = trimesh.load('mesh.ply')
 
     # Extract the vertex colors from the mesh
-    vertex_colors = mesh.visual.vertex_colors
+    #vertex_colors = mesh.visual.vertex_colors
 
-    material = trimesh.visual.material.from_color(vertex_colors)
+    #material = trimesh.visual.material.from_color(vertex_colors)
 
     # Assign the PBR materials to the mesh
-    mesh.visual.material = material
+    #mesh.visual.material = material
 
     mesh = mesh.smoothed()
 
