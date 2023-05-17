@@ -29,6 +29,7 @@ setup(
         "scikit-image",
         "scipy",
         "numpy",
+        "trimesh",
         "blobfile",
         "clip @ git+https://github.com/openai/CLIP.git",
     ],
