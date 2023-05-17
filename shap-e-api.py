@@ -46,7 +46,7 @@ def generate_point_cloud():
     from shap_e.util.notebooks import decode_latent_mesh
 
     for i, latent in enumerate(latents):
-        with open(f'mesh_{i}.ply', 'wb') as f:
+        with open(f'mesh.ply', 'wb') as f:
             decode_latent_mesh(xm, latent).tri_mesh().write_ply(f)
 
     mesh = trimesh.load('mesh.ply')
