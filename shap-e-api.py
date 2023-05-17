@@ -20,7 +20,8 @@ def generate_point_cloud():
 
     batch_size = 4
     guidance_scale = 15.0
-    prompt = "a shark"
+    # Get the prompt from the request
+    prompt = request.json['prompt']
 
     latents = sample_latents(
         batch_size=batch_size,
@@ -72,4 +73,4 @@ def generate_point_cloud():
     return send_file('output.glb')
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.6')
+    app.run(host='0.0.0.0')
