@@ -42,16 +42,11 @@ def generate_point_cloud():
     render_mode = 'nerf' # you can change this to 'stf'
     size = 64 # this is the size of the renders; higher values take longer to render.
 
-    cameras = create_pan_cameras(size, device)
-    for i, latent in enumerate(latents):
-        images = decode_latent_images(xm, latent, cameras, rendering_mode=render_mode)
-        display(gif_widget(images))
-
     # Example of saving the latents as meshes.
     from shap_e.util.notebooks import decode_latent_mesh
 
     for i, latent in enumerate(latents):
-        with open(f'example_mesh_{i}.ply', 'wb') as f:
+        with open(f'mesh_{i}.ply', 'wb') as f:
             decode_latent_mesh(xm, latent).tri_mesh().write_ply(f)
 
     mesh = trimesh.load('mesh.ply')
