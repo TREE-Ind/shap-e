@@ -7,6 +7,9 @@ from shap_e.diffusion.gaussian_diffusion import diffusion_from_config
 from shap_e.models.download import load_model, load_config
 from shap_e.util.notebooks import create_pan_cameras, decode_latent_images, gif_widget
 
+import boto3
+from botocore.exceptions import NoCredentialsError
+
 app = Flask(__name__)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -64,8 +67,22 @@ def generate_point_cloud():
     mesh.export('output.glb')
 
 
-    # Return the generated point cloud as a response
-    return send_file('output.glb')
+    s3 = boto3.client('s3')
+
+    filename = 'output.glb'  # this can be any file on your local machine
+    bucket_name = 'collodi'  # replace with your bucket name
+
+    try:
+        s3.upload_file(filename, bucket_name, filename)
+        print("Upload Successful")
+        url = f"https://{bucket_name}.s3.amazonaws.com/{filename}"
+        return jsonify({'url': url})
+    except FileNotFoundError:
+        print("The file was not found")
+        return jsonify({'error': 'The file was not found'}), 400
+    except NoCredentialsError:
+        print("Credentials not available")
+        return jsonify({'error': 'Credentials not available'}), 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
