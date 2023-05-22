@@ -64,12 +64,12 @@ def generate_point_cloud():
 
     mesh = mesh.smoothed()
 
-    mesh.export('output.glb')
+    mesh.export('output.obj')
 
 
     s3 = boto3.client('s3')
 
-    filename = 'output.glb'  # this can be any file on your local machine
+    filename = 'output.obj'  # this can be any file on your local machine
     bucket_name = 'collodi'  # replace with your bucket name
 
     try:
