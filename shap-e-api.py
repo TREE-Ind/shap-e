@@ -64,7 +64,7 @@ def generate_point_cloud():
     #mesh.visual.material = material
     
     transformation_matrix = trimesh.transformations.rotation_matrix(
-    np.radians(90),  # convert degrees to radians
+    np.radians(-90),  # convert degrees to radians
     (1, 0, 0)  # rotate around x-axis
     )
     
