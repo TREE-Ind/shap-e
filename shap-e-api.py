@@ -64,7 +64,7 @@ def generate_point_cloud():
 
     mesh = mesh.smoothed()
     
-    decimated_mesh = mesh.simplify_quadratic_decimation(0.1)
+    decimated_mesh = mesh.simplify_quadratic_decimation(0.5)
 
     decimated_mesh.export("output.obj")
 
