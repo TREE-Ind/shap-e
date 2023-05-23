@@ -61,6 +61,8 @@ def generate_point_cloud():
 
     # Assign the PBR materials to the mesh
     #mesh.visual.material = material
+    
+    mesh = mesh.simplify_quadratic_decimation(50000)
 
     mesh = mesh.smoothed()
 
