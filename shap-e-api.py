@@ -69,7 +69,7 @@ def generate_point_cloud():
     
     mesh.apply_transform(transformation_matrix)
     
-    mesh = mesh.simplify_quadratic_decimation(70000)
+    mesh = mesh.simplify_quadric_decimation(70000)
 
     mesh = mesh.smoothed()
 
