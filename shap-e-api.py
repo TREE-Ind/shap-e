@@ -1,6 +1,7 @@
 import torch
 from flask import Flask, request, jsonify, make_response, send_file
 import trimesh
+import numpy as np
 
 from shap_e.diffusion.sample import sample_latents
 from shap_e.diffusion.gaussian_diffusion import diffusion_from_config
