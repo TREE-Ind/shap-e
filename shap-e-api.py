@@ -62,7 +62,14 @@ def generate_point_cloud():
     # Assign the PBR materials to the mesh
     #mesh.visual.material = material
     
-    mesh = mesh.simplify_quadratic_decimation(50000)
+    transformation_matrix = trimesh.transformations.rotation_matrix(
+    np.radians(90),  # convert degrees to radians
+    (1, 0, 0)  # rotate around x-axis
+    )
+    
+    mesh.apply_transform(transformation_matrix)
+    
+    mesh = mesh.simplify_quadratic_decimation(70000)
 
     mesh = mesh.smoothed()
 
