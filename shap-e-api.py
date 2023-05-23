@@ -63,8 +63,10 @@ def generate_point_cloud():
     #mesh.visual.material = material
 
     mesh = mesh.smoothed()
+    
+    decimated_mesh = mesh.simplify_quadratic_decimation(0.1)
 
-    mesh.export('output.obj')
+    decimated_mesh.export("output.obj")
 
 
     s3 = boto3.client('s3')
