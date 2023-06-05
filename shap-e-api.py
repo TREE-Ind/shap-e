@@ -37,7 +37,7 @@ def generate_point_cloud():
         clip_denoised=True,
         use_fp16=True,
         use_karras=True,
-        karras_steps=64,
+        karras_steps=32,
         sigma_min=1e-3,
         sigma_max=160,
         s_churn=0,
